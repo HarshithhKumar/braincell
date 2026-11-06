@@ -408,7 +408,7 @@ Use the corresponding `.env.example` beside each service. Examples contain place
 | `VITE_FIREBASE_API_KEY` | Frontend | Firebase browser app configuration; this is delivered to the browser and must be restricted in Firebase/Google Cloud settings |
 | `VITE_RAZORPAY_KEY_ID` | Frontend | Razorpay checkout public key ID |
 
-The GitHub deployment workflow also requires repository Actions secrets: `AWS_REGION`, `AWS_ACCOUNT_ID`, `AWS_ACCESS_KEY`, `AWS_SECRET_ACCESS_KEY`, `ECS_CLUSTER`, `GATEWAY_SERVICE`, `AUTH_SERVICE`, `CHAT_SERVICE`, `AGENT_SERVICE`, `BILLING_SERVICE`, `S3_BUCKET`, `CLOUDFRONT_DISTRIBUTION_ID`, `VITE_SERVER_URL`, `VITE_FIREBASE_API_KEY`, and `VITE_RAZORPAY_KEY_ID`. These are GitHub-hosted deployment settings, not application `.env` variables.
+No GitHub Actions deployment secrets are currently required. Configure provider credentials and frontend build variables directly in the hosting platform you choose.
 
 ## API reference
 
@@ -481,7 +481,7 @@ Redis is used for:
 
 The repository includes one Dockerfile for each backend service. They use the `backend` directory as the Docker build context. The included `backend/docker-compose.yml` runs Redis only; MongoDB and the AI, payment, and storage providers must be configured separately.
 
-The GitHub Actions workflow in `.github/workflows/deploy.yml` runs on pushes to `main`. It builds the gateway/auth/chat/agent/billing images, pushes them to AWS ECR, requests ECS service deployments, builds the frontend, synchronizes `frontend/dist` to S3 (deleting destination files absent from the build), and invalidates CloudFront. Configure the workflow secrets listed in [Environment variables](#environment-variables) before relying on this workflow. The frontend build reads the `VITE_*` values from repository Actions secrets.
+GitHub Actions deployment has been intentionally removed. The repository does not currently configure automatic deployment from GitHub. Deploy the frontend and backend manually using your chosen hosting provider, and configure the required environment variables and secrets in that provider.
 
 There is no Render configuration or full application Compose deployment in this repository. For production, keep backend services private behind the gateway, use TLS for browser traffic, provide secrets through the platform's secret manager, and configure the exact frontend origin and internal service URLs.
 
