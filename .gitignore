@@ -1,0 +1,82 @@
+# =========================
+# Dependencies
+# =========================
+node_modules/
+**/node_modules/
+
+# =========================
+# Environment Files
+# =========================
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# =========================
+# Build
+# =========================
+dist/
+build/
+coverage/
+**/dist/
+**/build/
+**/coverage/
+backend/services/agent/temp/
+
+# =========================
+# Vite
+# =========================
+.vite/
+
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# AWS
+# =========================
+*.pem
+*.key
+*.p12
+
+# =========================
+# Firebase
+# =========================
+serviceAccountKey.json
+firebase-adminsdk*.json
+*-firebase-adminsdk-*.json
+
+# =========================
+# Misc
+# =========================
+.cache/
+**/.cache/
+tmp/
+temp/
+**/tmp/
+**/temp/
+dump.rdb
+*.rdb
+appendonly.aof
+*.bson
+*.archive
+mongodump/
