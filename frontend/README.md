@@ -25,3 +25,11 @@ Edit `.env` before starting the app and replace the copied example values with y
 ### Backend and Firebase prerequisites
 
 The frontend sends API requests to the gateway configured by `VITE_SERVER_URL`. Start the backend services and gateway before testing sign-in, conversations, or AI workflows. Also add the frontend's local development origin (normally `http://localhost:5173`) to the authorized domains in your Firebase project so Google sign-in can work locally.
+
+
+### Troubleshooting
+
+- **The app uses a different port:** Vite uses port `5173` by default. If that port is already in use, Vite may select the next available port. Use the URL printed in the terminal.
+- **Environment variable changes are not taking effect:** Stop the development server and run `npm run dev` again after editing `.env`.
+- **API requests fail:** Confirm that `VITE_SERVER_URL` points to the running backend gateway and that the gateway is reachable from your browser.
+- **Production build fails:** Run `npm run lint` to check for ESLint issues, then inspect the first error reported by `npm run build`.
